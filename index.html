@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hostel Management System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #555;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a,
+        nav button {
+            color: white;
+            text-decoration: none;
+            margin: 8px;
+            padding: 7px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: transparent;
+            font-size: 14px;
+        }
+
+        nav a:hover,
+        nav button:hover {
+            background-color: #777;
+        }
+
+        .login-btn {
+            background-color: #3498db;
+        }
+
+        .logout-btn {
+            background-color: #e74c3c;
+        }
+
+        /* DASHBOARD */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .summary-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .summary-box {
+            width: 220px;
+            padding: 25px;
+            background-color: #eeeeee;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .summary-box h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .summary-box p {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        /* LOGIN */
+
+        #loginSection {
+            display: none;
+            width: 400px;
+            max-width: 90%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        .submit-login {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #loginMessage {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>Hostel Management System</h1>
+
+        <p>BEC Girls Hostel - Bapatla</p>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="student.html">
+            Students
+        </a>
+
+        <a href="rooms.html">
+            Rooms
+        </a>
+
+        <a href="complaints.html">
+            Complaints
+        </a>
+
+        <button class="login-btn" onclick="showLogin()">
+
+            Login
+
+        </button>
+
+        <button id="logoutButton" class="logout-btn" onclick="logout()">
+
+            Logout
+
+        </button>
+
+    </nav>
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <div class="container" id="dashboard">
+
+        <h2>
+            Hostel Dashboard
+        </h2>
+
+        <p>
+            Welcome to BEC Girls Hostel Management System
+        </p>
+
+
+        <!-- SUMMARY BOXES -->
+
+        <div class="summary-container">
+
+
+            <!-- TOTAL STUDENTS -->
+
+            <div class="summary-box">
+
+                <h3>
+                    Total Students
+                </h3>
+
+                <p>
+                    120
+                </p>
+
+            </div>
+
+
+            <!-- TOTAL ROOMS -->
+
+            <div class="summary-box">
+
+                <h3>
+                    Total Rooms
+                </h3>
+
+                <p>
+                    40
+                </p>
+
+            </div>
+
+
+            <!-- COMPLAINT TYPES -->
+
+            <div class="summary-box">
+
+                <h3>
+                    Complaint Types
+                </h3>
+
+                <p>
+                    5
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= LOGIN SECTION ================= -->
+
+    <div id="loginSection">
+
+        <h2>
+            Login
+        </h2>
+
+
+        <form onsubmit="loginUser(event)">
+
+
+            <div class="form-group">
+
+                <label>
+                    User Type
+                </label>
+
+                <select id="userType" required>
+
+                    <option value="">
+                        -- Select User Type --
+                    </option>
+
+                    <option value="Admin">
+                        Admin
+                    </option>
+
+                    <option value="Student">
+                        Student
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Username / Roll Number
+                </label>
+
+                <input type="text" id="username" required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Password
+                </label>
+
+                <input type="password" id="password" required>
+
+            </div>
+
+
+            <button type="submit" class="submit-login">
+
+                Login
+
+            </button>
+
+
+        </form>
+
+
+        <div id="loginMessage"></div>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* DASHBOARD APPEARS FIRST */
+
+        window.onload = function () {
+
+            document.getElementById("dashboard")
+                .style.display = "block";
+
+            document.getElementById("loginSection")
+                .style.display = "none";
+
+        };
+
+
+        /* SHOW LOGIN */
+
+        function showLogin() {
+
+            document.getElementById("dashboard")
+                .style.display = "none";
+
+            document.getElementById("loginSection")
+                .style.display = "block";
+
+        }
+
+
+        /* LOGIN */
+
+        function loginUser(event) {
+
+            event.preventDefault();
+
+
+            let userType =
+                document.getElementById("userType").value;
+
+            let username =
+                document.getElementById("username").value.trim();
+
+            let password =
+                document.getElementById("password").value.trim();
+
+            let message =
+                document.getElementById("loginMessage");
+
+
+            /* ADMIN LOGIN */
+
+            if (
+                userType === "Admin" &&
+                username === "admin" &&
+                password === "admin123"
+            ) {
+
+                localStorage.setItem(
+                    "loggedIn",
+                    "true"
+                );
+
+                localStorage.setItem(
+                    "userRole",
+                    "Admin"
+                );
+
+                localStorage.removeItem(
+                    "studentRoll"
+                );
+
+
+                message.innerText =
+                    "Admin login successful!";
+
+                message.style.color =
+                    "green";
+
+
+                setTimeout(function () {
+
+                    window.location.href =
+                        "index.html";
+
+                }, 500);
+
+            }
+
+
+            /* STUDENT LOGIN */
+
+            else if (
+                userType === "Student" &&
+                username !== "" &&
+                password === "student123"
+            ) {
+
+                localStorage.setItem(
+                    "loggedIn",
+                    "true"
+                );
+
+                localStorage.setItem(
+                    "userRole",
+                    "Student"
+                );
+
+                localStorage.setItem(
+                    "studentRoll",
+                    username
+                );
+
+
+                message.innerText =
+                    "Student login successful!";
+
+                message.style.color =
+                    "green";
+
+
+                setTimeout(function () {
+
+                    window.location.href =
+                        "index.html";
+
+                }, 500);
+
+            }
+
+
+            else {
+
+                message.innerText =
+                    "Invalid username or password.";
+
+                message.style.color =
+                    "red";
+
+            }
+
+        }
+
+
+        /* LOGOUT */
+
+        function logout() {
+
+            localStorage.removeItem(
+                "loggedIn"
+            );
+
+            localStorage.removeItem(
+                "userRole"
+            );
+
+            localStorage.removeItem(
+                "studentRoll"
+            );
+
+
+            alert(
+                "Logged out successfully!"
+            );
+
+
+            window.location.href =
+                "index.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
