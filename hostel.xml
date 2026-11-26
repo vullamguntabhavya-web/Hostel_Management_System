@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hostel>
+
+    <hostelDetails>
+        <name>ABC Hostel</name>
+        <location>Bapatla</location>
+        <totalRooms>40</totalRooms>
+    </hostelDetails>
+
+    <students>
+
+        <student>
+            <name>Bhavya</name>
+            <rollNumber>DS101</rollNumber>
+            <email>bhavya@gmail.com</email>
+            <phone>9876543210</phone>
+            <branch>Data Science</branch>
+            <year>3rd Year</year>
+            <roomNumber>101</roomNumber>
+        </student>
+
+        <student>
+            <name>Priya</name>
+            <rollNumber>DS102</rollNumber>
+            <email>priya@gmail.com</email>
+            <phone>9876543211</phone>
+            <branch>Data Science</branch>
+            <year>3rd Year</year>
+            <roomNumber>102</roomNumber>
+        </student>
+
+    </students>
+
+    <rooms>
+
+        <room>
+            <roomNumber>101</roomNumber>
+            <capacity>4</capacity>
+            <occupied>3</occupied>
+            <available>1</available>
+        </room>
+
+        <room>
+            <roomNumber>102</roomNumber>
+            <capacity>4</capacity>
+            <occupied>4</occupied>
+            <available>0</available>
+        </room>
+
+        <room>
+            <roomNumber>103</roomNumber>
+            <capacity>4</capacity>
+            <occupied>2</occupied>
+            <available>2</available>
+        </room>
+
+    </rooms>
+
+</hostel>
